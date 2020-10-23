@@ -43,19 +43,19 @@ public class Random_Generation : MonoBehaviour
 
         Transform[] _tran = cor.GetComponentsInChildren<Transform>();
 
-        GenerateRoom(_tran[1].position);
+        GenerateRoom(_tran[1].position, Quaternion.identity);
     }
 
-    private void GenerateRoom(Vector3 _location)
+    private void GenerateRoom(Vector3 _location, Quaternion _rotation)
     {
-        GameObject big = Instantiate(room, _location, new Quaternion());
+        GameObject big = Instantiate(room, _location, _rotation);
         if (_roomsSpawned < roomsToGenerate)
         {
             for (int i = 0; i < 4; i++)
             {
                 if (Random.Range(0, 100) < chanceToSpawnRooms && _roomsSpawned < roomsToGenerate)
                 {
-                    GenerateCorridor(i * 90, big.GetComponent<Transform>().position);
+                    GenerateCorridor(transform.rotation.y + i * 90, big.GetComponent<Transform>().position);
                     _roomsSpawned++;
                 }
             }

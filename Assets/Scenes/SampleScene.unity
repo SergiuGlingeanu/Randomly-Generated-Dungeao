@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476781729691aeb459ed4e9163589c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomsGenerated: 10
+  roomsToGenerate: 10
   chanceToSpawnRooms: 50
   room: {fileID: 880345663767073313, guid: 9a9fca02d1a885742ab9d780bfef944f, type: 3}
   corridor: {fileID: 4545481494317970917, guid: a848bd05af3f4a347af057126b822cfe, type: 3}
