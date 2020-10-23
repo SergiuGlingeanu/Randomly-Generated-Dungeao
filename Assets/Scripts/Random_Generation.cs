@@ -13,8 +13,15 @@ public class Random_Generation : MonoBehaviour
 
     public GameObject room, corridor;
 
-    void Start()
+    private void Awake()
     {
+        Random_Generation_V2.roomsSpawn = 0;
+    }
+
+    /*void Start()
+    {
+        _roomsSpawned = 0;
+
         Instantiate(room, transform.position, Quaternion.identity);
 
         for (int i = 0; i < 4; i++)
@@ -28,7 +35,7 @@ public class Random_Generation : MonoBehaviour
 
         GenerateCorridor(90, transform.position);
     }
-
+    */
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
@@ -36,7 +43,7 @@ public class Random_Generation : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-
+    /*
     private void GenerateCorridor(float _rotation, Vector3 _location)
     {
         GameObject cor = Instantiate(corridor, _location, Quaternion.Euler(0, 0, _rotation));
@@ -60,5 +67,5 @@ public class Random_Generation : MonoBehaviour
                 }
             }
         }
-    }
+    } */
 }
