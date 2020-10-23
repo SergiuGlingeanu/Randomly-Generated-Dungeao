@@ -1,30 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Random_Generation_V3 : MonoBehaviour
 {
-    public int rooms, maxRooms;
+    public GameObject room;
 
-    public GameObject room, corridor;
+    public int maxRooms;
 
-    public bool fourDirections;
+    public float spaceBetweenRooms, chacneToSpawn;
 
     void Start()
     {
-        for (int i = -2; i < 2; i++)
+        for (int i = -1; i < 2; i += 2)
         {
-            
+            if (Random_Generation_V2.roomsSpawn < maxRooms && Random.Range(0, 1000) < chacneToSpawn)
+            {
+                Instantiate(room, transform.position += new Vector3(i * spaceBetweenRooms, 0, 0), Quaternion.identity);
+
+                Random_Generation_V2.roomsSpawn++;
+            }
+        }
+
+        for (int i = -1; i < 2; i += 2)
+        {
+            if (Random_Generation_V2.roomsSpawn < maxRooms && Random.Range(0,1000) < chacneToSpawn)
+            {
+                Instantiate(room, transform.position += new Vector3(0, i * spaceBetweenRooms, 0), Quaternion.identity);
+
+                Random_Generation_V2.roomsSpawn++;
+            }
         }
     }
 
     void Update()
     {
-        
-    }
-
-    private void SpawnRoom(Vector3 _postion, Quaternion _rotaion)
-    {
-
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
