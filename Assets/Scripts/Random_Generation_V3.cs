@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Random_Generation_V3 : MonoBehaviour
 {
@@ -31,14 +30,6 @@ public class Random_Generation_V3 : MonoBehaviour
 
                 Random_Generation_V2.roomsSpawn++;
             }
-        }
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            SceneManager.LoadScene(0);
         }
     }
 }
