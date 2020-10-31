@@ -6,15 +6,17 @@ public class Random_Generation_V2 : MonoBehaviour
 {
     public GameObject room, corridor;
 
-    public int chanceToSpawn, roomsGenerate;
+    public int chanceToSpawn, roomsGenerate, minRooms, rayLenght, roomThiccness;
+
+    public float secs;
 
     public static int  roomsSpawn;
 
-    private Vector2 _direction;
+    private Vector2 _direction, _startPos;
 
     void Start()
     {
-        Invoke("Generate", 1);
+        Invoke("Generate", secs);
     }
 
     private void GetDirection(float x)
@@ -42,19 +44,38 @@ public class Random_Generation_V2 : MonoBehaviour
     {
         for (int i = -2; i < 2; i++)
         {
-
-            if (Random.Range(0, 1000) < chanceToSpawn && roomsSpawn < roomsGenerate)
+            if (roomsSpawn < minRooms)
             {
                 GetDirection(i);
-                if (!Physics.Raycast(transform.position, _direction, 100f))
+                _startPos = (Vector2)transform.position + (_direction * roomThiccness);
+
+                if (!Physics2D.Raycast(_startPos, _direction, rayLenght))
                 {
                     roomsSpawn++;
-
                     GameObject cor = Instantiate(corridor, transform.position, Quaternion.Euler(0, 0, i * 90));
-
                     Transform[] yes = cor.GetComponentsInChildren<Transform>();
-
                     Instantiate(room, yes[1].position, Quaternion.Euler(0, 0, 0));
+                }
+                else if (Random.Range(0, 1000) < chanceToSpawn)
+                {
+                    Instantiate(corridor, transform.position, Quaternion.Euler(0, 0, i * 90));
+                }
+            }
+            else if (Random.Range(0, 1000) < chanceToSpawn && roomsSpawn < roomsGenerate)
+            {
+                GetDirection(i);
+                _startPos = (Vector2)transform.position + (_direction * roomThiccness);
+
+                if (!Physics2D.Raycast(_startPos, _direction, rayLenght))
+                {
+                    roomsSpawn++;
+                    GameObject cor = Instantiate(corridor, transform.position, Quaternion.Euler(0, 0, i * 90));
+                    Transform[] yes = cor.GetComponentsInChildren<Transform>();
+                    Instantiate(room, yes[1].position, Quaternion.Euler(0, 0, 0));
+                }
+                else if (Random.Range(0, 1000) < chanceToSpawn)
+                {
+                    Instantiate(corridor, transform.position, Quaternion.Euler(0, 0, i * 90));
                 }
             }
         }

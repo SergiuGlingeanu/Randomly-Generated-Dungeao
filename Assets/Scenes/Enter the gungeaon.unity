@@ -132,7 +132,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 728754610225460346, guid: 306ae8c83a58b2a4396233e7a24ce67f, type: 3}
       propertyPath: roomsGenerate
-      value: 20
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 728754610225460346, guid: 306ae8c83a58b2a4396233e7a24ce67f, type: 3}
+      propertyPath: rayLenght
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 728754610225460346, guid: 306ae8c83a58b2a4396233e7a24ce67f, type: 3}
+      propertyPath: roomThiccness
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 728754610225460346, guid: 306ae8c83a58b2a4396233e7a24ce67f, type: 3}
+      propertyPath: secs
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 728754610225460346, guid: 306ae8c83a58b2a4396233e7a24ce67f, type: 3}
+      propertyPath: minRooms
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 880345663767073313, guid: 306ae8c83a58b2a4396233e7a24ce67f, type: 3}
       propertyPath: m_Name
@@ -300,6 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44724891c9983f449dbe670df115a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yes: 0
 --- !u!4 &1308139942
 Transform:
   m_ObjectHideFlags: 0
